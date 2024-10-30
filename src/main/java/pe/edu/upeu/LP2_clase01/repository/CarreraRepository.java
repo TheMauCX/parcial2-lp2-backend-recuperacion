@@ -3,8 +3,9 @@ package pe.edu.upeu.LP2_clase01.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import pe.edu.upeu.LP2_clase01.entity.Libro;
+import pe.edu.upeu.LP2_clase01.entity.Carrera;
+
 @Repository
-public interface LibroRepository extends JpaRepository<Libro, Long>{
+public interface CarreraRepository extends JpaRepository<Carrera, Long>{
 
 }

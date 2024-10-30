@@ -23,18 +23,16 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name="editoriales")
-public class Editorial {
+@Table(name="facultades")
+public class Facultad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private Long id;
 	@Column(name="nombre")
 	private String nombre;
-	@Column(name="estado")
-	private char estado;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "editorial")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "facultad")
 	@JsonIgnore
-	private Set<Libro> libros;
+	private Set<Carrera> carreras;
 }
