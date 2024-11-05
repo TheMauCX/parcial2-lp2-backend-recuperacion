@@ -26,12 +26,12 @@ import pe.edu.upeu.LP2_clase01.service.FacultadService;
 public class FacultadController {
 
 	@Autowired
-	private FacultadService FacultadService;
+	private FacultadService Service;
 	
 	@GetMapping
 	public ResponseEntity<List<Facultad>> readAll(){
 		try {
-			List<Facultad> facultad = FacultadService.readAll();
+			List<Facultad> facultad = Service.readAll();
 			if(facultad.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
@@ -45,7 +45,7 @@ public class FacultadController {
 	@PostMapping
 	public ResponseEntity<Facultad> crear(@Valid @RequestBody Facultad cat){
 		try {
-			Facultad c = FacultadService.create(cat);
+			Facultad c = Service.create(cat);
 			return new ResponseEntity<>(c, HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -56,7 +56,7 @@ public class FacultadController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Facultad> getFacultadId(@PathVariable("id") Long id){
 		try {
-			Facultad c = FacultadService.read(id).get();
+			Facultad c = Service.read(id).get();
 			return new ResponseEntity<>(c, HttpStatus.CREATED);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -67,7 +67,7 @@ public class FacultadController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Facultad> delFacultad(@PathVariable("id") Long id){
 		try {
-			FacultadService.delete(id);
+			Service.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -78,9 +78,9 @@ public class FacultadController {
 	@PutMapping("/{id}")
 	public ResponseEntity<?> updateFacultad(@PathVariable("id") Long id, @Valid @RequestBody Facultad cat){
 
-			Optional<Facultad> c = FacultadService.read(id);
+			Optional<Facultad> c = Service.read(id);
 			if(!c.isEmpty()) {
-				return new ResponseEntity<>(FacultadService.update(cat), HttpStatus.OK);
+				return new ResponseEntity<>(Service.update(cat), HttpStatus.OK);
 			}else {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}		
